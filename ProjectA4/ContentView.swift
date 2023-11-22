@@ -19,7 +19,7 @@ struct ContentView: View {
     @StateObject private var albumManager = AlbumManager()
     @State private var songManager = SongManager()
     
-    @State private var selectedAlbum: Album? = Album(name: "test", band: "test", image: "test", creationDate: Date())
+    @State var selectedAlbum: Album = Album(name: "test", band: "test", image: "test", creationDate: Date())
 
     
     var body: some View {
@@ -55,8 +55,9 @@ struct ContentView: View {
                     Section(header: Text("Créer une chanson")) {
                         TextField("Nom de la musique", text: $songName)
                             Picker("Select an Album", selection: $selectedAlbum) {
-                                ForEach(albumManager.selectableAlbums, id: \.id) { album in
-                                    Text(album.name).tag(album.id)
+                                Text("Aucun album").tag(-1)
+                                ForEach(albumManager.selectableAlbums, id: \.self) { album in
+                                    Text(album.name).tag(album)
                                 }
                             }
                             .pickerStyle(WheelPickerStyle())
@@ -64,15 +65,11 @@ struct ContentView: View {
 
                     Section {
                         Button(action: {
-                            guard let selectedAlbumID = selectedAlbum?.id else {
-                                print("Veuillez sélectionner un album.")
-                                return
-                            }
-                            print(selectedAlbumID)
-                                songManager.saveSong(songName: songName, albumID: selectedAlbumID)
-                            }) {
-                                Text("Enregistrer la chanson")
-                            }  
+                            print(selectedAlbum.name)
+                            songManager.saveSong(songName: songName, albumID: selectedAlbum.id)
+                        }) {
+                            Text("Enregistrer l'album")
+                        }
                     }
                 }
                 .navigationTitle("Créer une chanson")
@@ -83,9 +80,16 @@ struct ContentView: View {
             .tag(1)
             NavigationView {
                 List(albumManager.selectableAlbums, id: \.self) { album in
-                    AsyncImage(url: URL(string: album.image), scale: 5)
-                    Text("\(album.name) by \(album.name), create the \(album.creationDate.formatted())")
+                    VStack {
+                        if album.image == "" {
+                            AsyncImage(url: URL(string: "https://caer.univ-amu.fr/wp-content/uploads/default-placeholder.png"), scale: 5)
+                        } else {
+                            AsyncImage(url: URL(string: album.image), scale: 5)
+                        }
+                    Text("\(album.name) by \(album.band)")
+                    }
                 }
+
             }
             .tabItem {
                 Label("Tous les albums", systemImage: "music.note")
@@ -93,8 +97,11 @@ struct ContentView: View {
             .tag(2)
             NavigationView {
                 List(songManager.songs, id: \.self) { song in
-                    Text("\(song.name) (Album non trouvé, ID: \(song.albumID))")
-
+                    if let songAlbum = albumManager.albums.first(where: { $0.id == song.albumID }) {
+                        Text("\(song.name) in \(songAlbum.name)")
+                    } else {
+                        Text("Aucune entité correspondante trouvée. (UUID: \(song.albumID)")
+                    }
                 }
                 .navigationTitle("Toutes les chansons")
             }
@@ -102,6 +109,14 @@ struct ContentView: View {
                 Label("Tous les musiques", systemImage: "music.note")
             }
             .tag(3)
+            
+            NavigationView {
+                Text("Top 10 Billboard")
+            }
+            .tabItem {
+                Label("Tous les musiques", systemImage: "music.note")
+            }
+            .tag(4)
         }
         .onAppear {
         }
