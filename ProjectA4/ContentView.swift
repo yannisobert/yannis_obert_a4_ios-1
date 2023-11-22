@@ -47,9 +47,6 @@ struct ContentView: View {
                 }
                 .tag(4)
         }
-        .onAppear {
-            // Additional setup code if needed
-        }
         .navigationTitle("Gestionnaire de musique")
     }
 }

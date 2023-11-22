@@ -19,9 +19,8 @@ struct AlbumListView: View {
             }
             Text("\(album.name) by \(album.band)")
         }
-        .onAppear {
-            print("here")
-            print(sharedDataManager.albumManager.selectableAlbums)
+        .onAppear{
+            sharedDataManager.objectWillChange.send()
         }
     }
 }

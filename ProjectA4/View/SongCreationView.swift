@@ -10,9 +10,9 @@ import SwiftUI
 struct SongCreationView: View {
     @EnvironmentObject var sharedDataManager: SharedDataManager
 
-    @State private var songName = ""
-    @StateObject private var albumManager = AlbumManager()
-    @State private var selectedAlbum: Album = Album(name: "test", band: "test", image: "test", creationDate: Date())
+    @State public var songName = ""
+    @StateObject public var albumManager = AlbumManager()
+    @State public var selectedAlbum: Album = Album(name: "test", band: "test", image: "test", creationDate: Date())
     
     var body: some View {
             Form {
@@ -29,12 +29,14 @@ struct SongCreationView: View {
                 
                 Section {
                     Button(action: {
-                        print(selectedAlbum.name)
                         sharedDataManager.songManager.saveSong(songName: songName, albumID: selectedAlbum.id)
                     }) {
                         Text("Enregistrer la chanson")
                     }
                 }
+            }
+            .onAppear{
+                sharedDataManager.objectWillChange.send()
             }
             .navigationTitle("Créer une chanson")
         

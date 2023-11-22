@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct SongManager {
+class SongManager: ObservableObject {
     var selectableSongs: [Song] = []
-    var songs: [Song] = []
+    @Published var songs: [Song] = []
 
-    mutating func saveSong(songName: String, albumID: UUID) {
-        let newSong = Song(name: songName, albumID: albumID)
-        selectableSongs.append(newSong)
-        songs.append(newSong)
+    func saveSong(songName: String, albumID: UUID) {
+        //selectableSongs.append(Song(name: songName, albumID: albumID))
+        songs.append(Song(name: songName, albumID: albumID))
+        print(selectableSongs)
     }
 }

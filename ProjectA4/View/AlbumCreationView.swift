@@ -34,6 +34,9 @@ struct AlbumCreationView: View {
                     }
                 }
             }
+            .onAppear{
+                sharedDataManager.objectWillChange.send()
+            }
             .navigationTitle("Créer un album")
         }
     }

@@ -15,6 +15,5 @@ class AlbumManager: ObservableObject {
         let newAlbum = Album(name: albumName, band: bandName, image: albumImage, creationDate: albumCreationDate)
         selectableAlbums.append(newAlbum)
         albums.append(newAlbum)
-        print(selectableAlbums)
     }
 }
