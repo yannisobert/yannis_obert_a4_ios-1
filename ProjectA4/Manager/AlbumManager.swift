@@ -7,14 +7,14 @@
 
 import Foundation
 
-
 class AlbumManager: ObservableObject {
-    @Published var selectableAlbums: [Album] = []
-    var albums: [Album] = []
+    @Published public var selectableAlbums: [Album] = []
+    @Published public var albums: [Album] = []
 
     func saveAlbum(albumName: String, bandName: String, albumImage: String, albumCreationDate: Date) {
         let newAlbum = Album(name: albumName, band: bandName, image: albumImage, creationDate: albumCreationDate)
         selectableAlbums.append(newAlbum)
         albums.append(newAlbum)
+        print(selectableAlbums)
     }
 }
