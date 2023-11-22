@@ -21,6 +21,7 @@
 		EFAAEE172B0E04E30052C742 /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAEE162B0E04E30052C742 /* SongListView.swift */; };
 		EFAAEE192B0E04F40052C742 /* Top10BillboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAEE182B0E04F40052C742 /* Top10BillboardView.swift */; };
 		EFAAEE1B2B0E06CC0052C742 /* SharedDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAEE1A2B0E06CC0052C742 /* SharedDataManager.swift */; };
+		EFAAEE212B0E48000052C742 /* EditSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAEE202B0E48000052C742 /* EditSongView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		EFAAEE162B0E04E30052C742 /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
 		EFAAEE182B0E04F40052C742 /* Top10BillboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top10BillboardView.swift; sourceTree = "<group>"; };
 		EFAAEE1A2B0E06CC0052C742 /* SharedDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDataManager.swift; sourceTree = "<group>"; };
+		EFAAEE202B0E48000052C742 /* EditSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSongView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				EFAAEE142B0E04D50052C742 /* AlbumListView.swift */,
 				EFAAEE162B0E04E30052C742 /* SongListView.swift */,
 				EFAAEE182B0E04F40052C742 /* Top10BillboardView.swift */,
+				EFAAEE202B0E48000052C742 /* EditSongView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				EFAAEE052B0CA2A50052C742 /* Album.swift in Sources */,
 				EFAAEE1B2B0E06CC0052C742 /* SharedDataManager.swift in Sources */,
 				EFAAEE172B0E04E30052C742 /* SongListView.swift in Sources */,
+				EFAAEE212B0E48000052C742 /* EditSongView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Album: Identifiable, Hashable {
+struct Album: Identifiable, Hashable, Equatable {
     var id: UUID = UUID()
     var name: String
     var band: String

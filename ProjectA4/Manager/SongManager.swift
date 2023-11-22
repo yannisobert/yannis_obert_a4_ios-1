@@ -16,4 +16,8 @@ class SongManager: ObservableObject {
         songs.append(Song(name: songName, albumID: albumID))
         print(selectableSongs)
     }
+    
+    func updateSong(index: Int, song: Song) {
+        songs[index] = song
+    }
 }

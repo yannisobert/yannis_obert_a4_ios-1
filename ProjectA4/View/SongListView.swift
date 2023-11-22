@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SongListView: View {
     @EnvironmentObject var sharedDataManager: SharedDataManager
+    @State public var isEditing = false
+    @State public var selectedSong: Song = Song(name: "test", albumID: UUID())
+    @State public var selectedSongIndex: Int = 666
     
     var body: some View {
         List {
@@ -23,6 +26,16 @@ struct SongListView: View {
                         Text("\(song.name)")
                     }
                 Button(action: {
+                    selectedSong = song
+                    if let index = sharedDataManager.songManager.songs.firstIndex(of: song) {
+                        selectedSongIndex = index
+                    }
+                    isEditing.toggle()
+                }) {
+                    Image(systemName: "pencil")
+                        .foregroundColor(.blue)
+                }
+                Button(action: {
                     if let index = sharedDataManager.songManager.songs.firstIndex(of: song) {
                         sharedDataManager.songManager.songs.remove(at: index)
                         sharedDataManager.objectWillChange.send()
@@ -36,6 +49,10 @@ struct SongListView: View {
                     sharedDataManager.songManager.songs.remove(atOffsets: indexSet)
                 })
             }
+        .navigationBarItems(trailing: EditButton())
+        .sheet(isPresented: $isEditing) {
+            EditSongView(song: $selectedSong, index: $selectedSongIndex)
+                    }
         .onAppear{
             sharedDataManager.objectWillChange.send()
         }

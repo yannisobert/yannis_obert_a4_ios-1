@@ -7,48 +7,32 @@
 
 import SwiftUI
 
-class EditSongViewModel: ObservableObject {
-    @Published var editedSong: Song
-
-    init(song: Song) {
-        self.editedSong = song
-    }
-}
-
 struct EditSongView: View {
+    @Binding var song: Song
+    @Binding var index: Int
     @EnvironmentObject var sharedDataManager: SharedDataManager
-    @Binding var isPresented: Bool
-    @ObservedObject var viewModel: EditSongViewModel
-
-    init(song: Song, isPresented: Binding<Bool>) {
-        _viewModel = ObservedObject(initialValue: EditSongViewModel(song: song))
-        _isPresented = isPresented
-    }
-
+    
+    @State private var updatedName: String = ""
+    @State private var updateAlbum: Album = Album(name: "test", band: "test", image: "test", creationDate: Date())
+    
     var body: some View {
-        Form {
-            Section(header: Text("Song Details")) {
-                TextField("Song Name", text: $viewModel.editedSong.name)
+        VStack {
+            TextField("Enter song name", text: $updatedName)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            Picker("Select an Album", selection: $updateAlbum) {
+                Text("Aucun album").tag(-1)
+                ForEach(sharedDataManager.albumManager.selectableAlbums, id: \.self) { album in
+                    Text(album.name).tag(album)
+                }
             }
-            //Section(header: Text("Album Details")) {
-            //    // Add any other details you want to edit
-            //}
+            .pickerStyle(WheelPickerStyle())
+            Button("Save Changes") {
+                song.name = updatedName
+                song.albumID = updateAlbum.id
+                sharedDataManager.songManager.updateSong(index: index, song: song)
+            }
         }
         .navigationTitle("Edit Song")
-        .navigationBarItems(
-            trailing: Button("Save", action: saveChanges)
-        )
-        
-    }
-
-    func saveChanges() {
-        if let index = sharedDataManager.songManager.songs.firstIndex(where: { $0.id == viewModel.editedSong.id }) {
-            sharedDataManager.songManager.songs[index] = viewModel.editedSong
-        }
-        dismiss()
-    }
-
-    func dismiss() {
-        isPresented = false
     }
 }
