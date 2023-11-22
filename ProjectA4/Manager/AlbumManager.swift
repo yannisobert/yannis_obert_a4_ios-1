@@ -16,4 +16,8 @@ class AlbumManager: ObservableObject {
         selectableAlbums.append(newAlbum)
         albums.append(newAlbum)
     }
+    
+    func updateAlbum(index: Int, album: Album) {
+        selectableAlbums[index] = album
+    }
 }

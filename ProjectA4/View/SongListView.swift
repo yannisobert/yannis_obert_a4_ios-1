@@ -52,7 +52,7 @@ struct SongListView: View {
         .navigationBarItems(trailing: EditButton())
         .sheet(isPresented: $isEditing) {
             EditSongView(song: $selectedSong, index: $selectedSongIndex)
-                    }
+        }
         .onAppear{
             sharedDataManager.objectWillChange.send()
         }

@@ -9,6 +9,10 @@ import SwiftUI
 
 struct AlbumListView: View {
     @EnvironmentObject var sharedDataManager: SharedDataManager
+    @State public var selectedAlbum: Album = Album(name: "test", band: "test", image: "test", creationDate: Date())
+    @State public var selectedAlbumIndex: Int = 666
+    @State public var isEditing = false
+
 
     var body: some View {
         List{
@@ -19,6 +23,19 @@ struct AlbumListView: View {
                     AsyncImage(url: URL(string: album.image), scale: 5)
                 }
                 Text("\(album.name) by \(album.band)")
+                
+                
+                Button(action: {
+                    selectedAlbum = album
+                    if let index = sharedDataManager.albumManager.selectableAlbums.firstIndex(of: album) {
+                        selectedAlbumIndex = index
+                    }
+                    isEditing.toggle()
+                }) {
+                    Image(systemName: "pencil")
+                        .foregroundColor(.blue)
+                }
+                
                 Button(action: {
                     if let index = sharedDataManager.albumManager.albums.firstIndex(of: album) {
                         print("HERE")
@@ -30,6 +47,9 @@ struct AlbumListView: View {
                         .foregroundColor(.red)
                 }
             }
+        }
+        .sheet(isPresented: $isEditing) {
+            EditAlbumView(album: $selectedAlbum, index: $selectedAlbumIndex)
         }
         .onAppear{
             sharedDataManager.objectWillChange.send()
