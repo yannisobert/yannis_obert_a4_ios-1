@@ -14,10 +14,10 @@ struct Top10BillboardView: View {
         VStack {
         Text("Top 10 Billboard")
             List(topSongs, id: \.self) { song in
-                            Text("\(song.title) by \(song.artist.name)")
-                        }
-                        .onAppear(perform: loadData)
-                        .navigationTitle("Top 10 Billboard")
+                Text("\(song.title) by \(song.artist.name)")
+            }
+            .onAppear(perform: loadData)
+            .navigationTitle("Top 10 Billboard")
         }
     }
     
