@@ -2,9 +2,9 @@
 
 ## Description
 
-Cette application permet d'enregistrer ses albums et ses musiques préférés.
+This application allows you to save your favorite albums and music.
 
-Nous retrouvons également une page sur laquelle nous avons le top 10 Billboard grâce à une API.
+We also find a page on which we have the Billboard top 10 thanks to an API.
 
 ## Project Architecture
 ```
@@ -36,9 +36,9 @@ Nous retrouvons également une page sur laquelle nous avons le top 10 Billboard 
 
 ## Entities
 
-Nous retrouvons en tout quatre entitées avec en tout 2 relations
-- Première relation : plusieurs musiques (Song) peuvent être relié à un album.
-- Seconde relation : une top musique (TopSong) peut être relié à un artist.
+We find a total of four entities with a total of 2 relationships:
+- First relationship: several songs (Song) can be linked to an album.
+- Second relationship: a top music (TopSong) can be linked to an artist.
 
 ### 1. Album 
 
@@ -65,41 +65,41 @@ Nous retrouvons en tout quatre entitées avec en tout 2 relations
 
 ## Pages
 
-En bas de notre nous retrouvons toujours un menu pour pouvoir accéder aux différentes pages.
+At the bottom of our page we always find a menu to access the different pages.
 
 ### 1. List albums (& edit/remove)
-Liste tous les albums.
+List all albums.
 
-Bouton à côté de chaque album pour pouvoir les supprimer
+Button next to each album to be able to delete them.
 
-Bouton à côté de chaque album pour pouvoir l'éditer, cela ouvre une fenêtre par dessus qui permet de modifier les champs (WARNING: il faut absolument que le nom de l'album et le nom du groupe ne soient pas vide)
+Button next to each album to be able to edit it, this opens a window above which allows you to modify the fields (WARNING: it is absolutely necessary that the name of the album and the name of the group are not empty).
 
 <img src="images/listAlbum.png" alt="" style="max-height: 500px">
 
 ### 2. List songs (& edit/remove)
-List toutes les musiques
+List all music.
 
-Bouton à côté de chaque musique pour pouvoir les supprimer
+Button next to each music to be able to delete them.
 
-Bouton à côté de chaque musique pour pouvoir l'éditer, cela ouvre une fenêtre par dessus qui permet de modifier les champs (WARNING: il faut absolument que le nom de la musique ne soit pas vide)
+Button next to each music to be able to edit it, this opens a window above which allows you to modify the fields (WARNING: it is absolutely necessary that the name of the music is not empty).
 
 <img src="images/listSong.png" alt="" style="max-height: 500px">
 
 ### 3. Creation album
 
-Pour créer un album nous plusieurs champs, un pour ajouter un nom, un second pour mettre le nom du groupe, un troisième pour mettre l'URL d'une image et un dernier pour ajouter la date de sortie.
+To create an album we have several fields, one to add a name, a second to put the name of the group, a third to put the URL of an image and a last one to add the release date.
 
 <img src="images/createAlbum.png" alt="" style="max-height: 500px">
 
 ### 4. Creation song
 
-Pour créer une musique nous retrouvons un TextField pour insérer le nom d'une musique et un Picker qui permet de choisir un album déjà enregistré.
+To create music we find a TextField to insert the name of music and a Picker which allows you to choose an already recorded album.
 
 <img src="images/createSong.png" alt="" style="max-height: 500px">
 
 ### 5. Top 10 Billboard (API)
 
-Grâce à l'API de Deezer nous retrouvons sur cette page le top 10 Billboard.
+Thanks to the Deezer API we find the Billboard top 10 on this page.
 
 <img src="images/topBillboard.png" alt="" style="max-height: 500px">
 
