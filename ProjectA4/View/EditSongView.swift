@@ -12,14 +12,13 @@ struct EditSongView: View {
     @Binding var index: Int
     @EnvironmentObject var sharedDataManager: SharedDataManager
     
-    @State private var updatedName: String = ""
     @State private var updateAlbum: Album = Album(name: "test", band: "test", image: "test", creationDate: Date())
     
     @State private var isShowingAlert = false
     
     var body: some View {
         VStack {
-            TextField("Enter song name", text: $updatedName)
+            TextField("Enter song name", text: $song.name)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             Picker("Select an Album", selection: $updateAlbum) {
@@ -30,7 +29,6 @@ struct EditSongView: View {
             }
             .pickerStyle(WheelPickerStyle())
             Button("Save Changes") {
-                song.name = updatedName
                 song.albumID = updateAlbum.id
                 if song.name != "" {
                     sharedDataManager.songManager.updateSong(index: index, song: song)

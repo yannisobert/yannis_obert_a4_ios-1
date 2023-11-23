@@ -13,33 +13,29 @@ struct EditAlbumView: View {
     @Binding var index: Int
     @EnvironmentObject var sharedDataManager: SharedDataManager
     
-    @State private var updatedName: String = ""
-    @State private var updatedBand: String = ""
-    @State private var updatedImage: String = ""
-    @State private var updatedCreationDate = Date()
     @State private var updateAlbum: Album = Album(name: "test", band: "test", image: "test", creationDate: Date())
     
     @State private var isShowingAlert = false
     
     var body: some View {
         VStack {
-            TextField("Enter album name", text: $updatedName)
+            TextField("Enter album name", text: $album.name)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            TextField("Enter album band", text: $updatedBand)
+            TextField("Enter album band", text: $album.band)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            TextField("Enter album image url", text: $updatedImage)
+            TextField("Enter album image url", text: $album.image)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            DatePicker("Date de création", selection: $updatedCreationDate, displayedComponents: .date)
+            DatePicker("Date de création", selection: $album.creationDate, displayedComponents: .date)
 
             .pickerStyle(WheelPickerStyle())
             Button("Save Changes") {
-                album.name = updatedName
-                album.band = updatedBand
-                album.image = updatedImage
-                album.creationDate = updatedCreationDate
+                album.name = album.name
+                album.band = album.band
+                album.image = album.image
+                album.creationDate = album.creationDate
                 
                 
                 
