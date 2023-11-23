@@ -21,7 +21,3 @@ struct Top10BillboardView_Previews: PreviewProvider {
         Top10BillboardView()
     }
 }
-
-struct Artist: Codable, Hashable {
-    let name: String
-}

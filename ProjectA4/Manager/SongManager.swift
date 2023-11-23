@@ -8,13 +8,10 @@
 import Foundation
 
 class SongManager: ObservableObject {
-    var selectableSongs: [Song] = []
     @Published var songs: [Song] = []
 
     func saveSong(songName: String, albumID: UUID) {
-        //selectableSongs.append(Song(name: songName, albumID: albumID))
         songs.append(Song(name: songName, albumID: albumID))
-        print(selectableSongs)
     }
     
     func updateSong(index: Int, song: Song) {

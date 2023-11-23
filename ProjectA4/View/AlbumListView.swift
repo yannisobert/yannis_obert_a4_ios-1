@@ -16,34 +16,36 @@ struct AlbumListView: View {
     var body: some View {
         List{
             ForEach(sharedDataManager.albumManager.selectableAlbums, id: \.self) { album in
-                if album.image == "" {
-                    AsyncImage(url: URL(string: "https://caer.univ-amu.fr/wp-content/uploads/default-placeholder.png"), scale: 5)
-                } else {
-                    AsyncImage(url: URL(string: album.image), scale: 5)
-                }
-                Text("\(album.name) by \(album.band)")
-                
-                
-                Button(action: {
-                    selectedAlbum = album
-                    if let index = sharedDataManager.albumManager.selectableAlbums.firstIndex(of: album) {
-                        selectedAlbumIndex = index
+                VStack {
+                    if album.image == "" {
+                        AsyncImage(url: URL(string: "https://caer.univ-amu.fr/wp-content/uploads/default-placeholder.png"), scale: 5)
+                    } else {
+                        AsyncImage(url: URL(string: album.image), scale: 5)
                     }
-                    isEditing.toggle()
-                }) {
-                    Image(systemName: "pencil")
-                        .foregroundColor(.blue)
+                    Text("\(album.name) by \(album.band)")
+                    Text("Created the: \(album.creationDate)")
+                    
+                        Button(action: {
+                            selectedAlbum = album
+                            if let index = sharedDataManager.albumManager.selectableAlbums.firstIndex(of: album) {
+                                selectedAlbumIndex = index
+                            }
+                            isEditing.toggle()
+                        }) {
+                            Image(systemName: "pencil")
+                            .foregroundColor(.blue)
+                        }
+                    
                 }
-                
                 Button(action: {
-                    if let index = sharedDataManager.albumManager.albums.firstIndex(of: album) {
-                        print("HERE")
-                        sharedDataManager.albumManager.selectableAlbums.remove(at: index)
+                    if let indexSecond = sharedDataManager.albumManager.selectableAlbums.firstIndex(of: album) {
+                        sharedDataManager.albumManager.selectableAlbums.remove(at: indexSecond)
                         sharedDataManager.objectWillChange.send()
                     }
+                    
                 }) {
                     Image(systemName: "trash")
-                        .foregroundColor(.red)
+                    .foregroundColor(.red)
                 }
             }
         }

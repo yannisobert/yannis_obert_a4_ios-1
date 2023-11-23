@@ -19,6 +19,8 @@ struct EditAlbumView: View {
     @State private var updatedCreationDate = Date()
     @State private var updateAlbum: Album = Album(name: "test", band: "test", image: "test", creationDate: Date())
     
+    @State private var isShowingAlert = false
+    
     var body: some View {
         VStack {
             TextField("Enter album name", text: $updatedName)
@@ -39,8 +41,17 @@ struct EditAlbumView: View {
                 album.image = updatedImage
                 album.creationDate = updatedCreationDate
                 
-                sharedDataManager.albumManager.updateAlbum(index: index, album: album)
+                
+                
+                if album.name != "" && album.band != ""{
+                    sharedDataManager.albumManager.updateAlbum(index: index, album: album)
+                } else {
+                    isShowingAlert = true
+                }
             }
+        }
+        .alert(isPresented: $isShowingAlert) {
+            Alert(title: Text("Erreur"), message: Text("Le nom de l'album et du groupe ne peuvent pas être vide"), dismissButton: .default(Text("OK")))
         }
         .navigationTitle("Edit Album")
     }

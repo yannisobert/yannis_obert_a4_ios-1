@@ -16,7 +16,8 @@ struct SongListView: View {
     var body: some View {
         List {
             ForEach(sharedDataManager.songManager.songs, id: \.self) { song in
-                if let songAlbum = sharedDataManager.albumManager.albums.first(where: { $0.id == song.albumID }) {
+                VStack {
+                if let songAlbum = sharedDataManager.albumManager.selectableAlbums.first(where: { $0.id == song.albumID }) {
                     HStack {
                         Text("\(song.name) in \(songAlbum.name)")
                         Spacer()
@@ -25,6 +26,7 @@ struct SongListView: View {
                 } else {
                     Text("\(song.name)")
                 }
+                HStack{
             Button(action: {
                 selectedSong = song
                 if let index = sharedDataManager.songManager.songs.firstIndex(of: song) {
@@ -34,10 +36,10 @@ struct SongListView: View {
             }) {
                 Image(systemName: "pencil")
                     .foregroundColor(.blue)
-            }
+            }}}
             Button(action: {
-                if let index = sharedDataManager.songManager.songs.firstIndex(of: song) {
-                    sharedDataManager.songManager.songs.remove(at: index)
+                if let indexSecond = sharedDataManager.songManager.songs.firstIndex(of: song) {
+                    sharedDataManager.songManager.songs.remove(at: indexSecond)
                     sharedDataManager.objectWillChange.send()
                 }
             }) {
@@ -45,9 +47,6 @@ struct SongListView: View {
                     .foregroundColor(.red)
             }
         }
-        .onDelete(perform: { indexSet in
-                sharedDataManager.songManager.songs.remove(atOffsets: indexSet)
-            })
         }
         .navigationBarItems(trailing: EditButton())
         .sheet(isPresented: $isEditing) {

@@ -26,7 +26,6 @@ struct AlbumCreationView: View {
                 }
                 
                 Section {
-                    // Use albumManager and save functionality here
                     Button(action: {
                         sharedDataManager.albumManager.saveAlbum(albumName: albumName, bandName: bandName, albumImage: albumImage, albumCreationDate: albumCreationDate)
                     }) {

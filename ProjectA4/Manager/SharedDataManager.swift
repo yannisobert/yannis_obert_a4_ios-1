@@ -2,10 +2,10 @@
 //  SharedDataManager.swift
 //  ProjectA4
 //
-//  Created by Yannis Obert on 22/11/2023.
+//  Created by Yannis Obert on 23/11/2023.
 //
 
-import SwiftUI
+import Foundation
 
 class SharedDataManager: ObservableObject {
     @Published var albumManager = AlbumManager()

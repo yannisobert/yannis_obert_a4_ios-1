@@ -15,6 +15,8 @@ struct EditSongView: View {
     @State private var updatedName: String = ""
     @State private var updateAlbum: Album = Album(name: "test", band: "test", image: "test", creationDate: Date())
     
+    @State private var isShowingAlert = false
+    
     var body: some View {
         VStack {
             TextField("Enter song name", text: $updatedName)
@@ -30,8 +32,15 @@ struct EditSongView: View {
             Button("Save Changes") {
                 song.name = updatedName
                 song.albumID = updateAlbum.id
-                sharedDataManager.songManager.updateSong(index: index, song: song)
+                if song.name != "" {
+                    sharedDataManager.songManager.updateSong(index: index, song: song)
+                } else {
+                    isShowingAlert = true
+                }
             }
+        }
+        .alert(isPresented: $isShowingAlert) {
+            Alert(title: Text("Erreur"), message: Text("Le nom de la chanson ne peut pas être vide"), dismissButton: .default(Text("OK")))
         }
         .navigationTitle("Edit Song")
     }
