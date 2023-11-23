@@ -39,8 +39,6 @@ struct EditAlbumView: View {
                 album.image = album.image
                 album.creationDate = album.creationDate
                 
-                
-                
                 if album.name != "" && album.band != ""{
                     sharedDataManager.albumManager.updateAlbum(index: index, album: album)
                     sharedDataManager.objectWillChange.send()

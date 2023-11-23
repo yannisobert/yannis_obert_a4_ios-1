@@ -8,7 +8,6 @@
 import Foundation
 
 class AlbumManager: ObservableObject {
-    
     @Published public var selectableAlbums: [Album] = []
 
     func saveAlbum(albumName: String, bandName: String, albumImage: String, albumCreationDate: Date) {
