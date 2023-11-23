@@ -16,6 +16,9 @@ struct EditSongView: View {
     
     @State private var isShowingAlert = false
     
+    @Environment(\.presentationMode) var presentationMode
+
+    
     var body: some View {
         VStack {
             TextField("Enter song name", text: $song.name)
@@ -32,6 +35,8 @@ struct EditSongView: View {
                 song.albumID = updateAlbum.id
                 if song.name != "" {
                     sharedDataManager.songManager.updateSong(index: index, song: song)
+                    sharedDataManager.objectWillChange.send()
+                    presentationMode.wrappedValue.dismiss()
                 } else {
                     isShowingAlert = true
                 }
