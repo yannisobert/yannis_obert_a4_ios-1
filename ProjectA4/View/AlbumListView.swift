@@ -13,7 +13,6 @@ struct AlbumListView: View {
     @State public var selectedAlbumIndex: Int = 666
     @State public var isEditing = false
 
-
     var body: some View {
         List{
             ForEach(sharedDataManager.albumManager.selectableAlbums, id: \.self) { album in

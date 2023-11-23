@@ -48,23 +48,3 @@ struct Top10BillboardView: View {
             task.resume()
         }
 }
-
-
-struct TopSongsResponse: Codable {
-    let data: [TopSong]
-}
-
-struct TopSong: Codable, Hashable {
-    let title: String
-    let artist: Artist
-}
-
-struct Artist: Codable, Hashable {
-    let name: String
-}
-
-struct Top10BillboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        Top10BillboardView()
-    }
-}

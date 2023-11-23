@@ -23,6 +23,7 @@
 		EFAAEE1B2B0E06CC0052C742 /* SharedDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAEE1A2B0E06CC0052C742 /* SharedDataManager.swift */; };
 		EFAAEE212B0E48000052C742 /* EditSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAEE202B0E48000052C742 /* EditSongView.swift */; };
 		EFAAEE252B0E58410052C742 /* EditAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAEE242B0E58410052C742 /* EditAlbumView.swift */; };
+		EFAAEE272B0F3FD40052C742 /* Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAEE262B0F3FD40052C742 /* Top.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		EFAAEE1A2B0E06CC0052C742 /* SharedDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDataManager.swift; sourceTree = "<group>"; };
 		EFAAEE202B0E48000052C742 /* EditSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSongView.swift; sourceTree = "<group>"; };
 		EFAAEE242B0E58410052C742 /* EditAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlbumView.swift; sourceTree = "<group>"; };
+		EFAAEE262B0F3FD40052C742 /* Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				EFAAEDFA2B0B6BE80052C742 /* Preview Content */,
 				EFAAEE042B0CA2A50052C742 /* Album.swift */,
 				EFAAEE062B0CA2C70052C742 /* Song.swift */,
+				EFAAEE262B0F3FD40052C742 /* Top.swift */,
 			);
 			path = ProjectA4;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				EFAAEE052B0CA2A50052C742 /* Album.swift in Sources */,
 				EFAAEE252B0E58410052C742 /* EditAlbumView.swift in Sources */,
 				EFAAEE1B2B0E06CC0052C742 /* SharedDataManager.swift in Sources */,
+				EFAAEE272B0F3FD40052C742 /* Top.swift in Sources */,
 				EFAAEE172B0E04E30052C742 /* SongListView.swift in Sources */,
 				EFAAEE212B0E48000052C742 /* EditSongView.swift in Sources */,
 			);
